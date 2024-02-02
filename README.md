@@ -26,6 +26,6 @@ bot.py file - The file containing the bots code, nothing major here for now
 
 **Credits:**
 
-Thanks to Rapptz for creatind discord.py in the first place :) - https://github.com/Rapptz/discord.py
+Thanks to Rapptz for creating discord.py in the first place :) - https://github.com/Rapptz/discord.py
 
-For further understand of discord.py, gain yourself some fundamental Python knowledge and read the official discord.py documentation - https://discordpy.readthedocs.io/en/stable/
+For further understanding of discord.py, gain yourself some fundamental Python knowledge and read the official discord.py documentation - https://discordpy.readthedocs.io/en/stable/
