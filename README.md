@@ -10,7 +10,7 @@ Run the following in cmd:
 ```pip install asyncio```,
 ```pip install python-dotenv```,
 
-There's your imports finished, now, if you don't already have a bot token well unfortunately you'll have to watch a Youtube video on how to setup a bot via Discord.
+There's your imports finished, now, if you don't already have a bot token, read this - https://discordpy.readthedocs.io/en/stable/discord.html
 
 **Next Step:**
 Go to the ```.env``` file and after the ```BOT_TOKEN=``` paste your bot token, no spaces, and no quotations.
