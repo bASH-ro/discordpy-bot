@@ -18,8 +18,7 @@ bot = commands.Bot(command_prefix='.', intents=intents, help_command=None, case_
 @bot.event
 async def on_ready(): ### This is called when everything is ready, DO NOT put anything inside here such as presence changes, or loading cogs etc. This is only here for you to know when the bot is ready. 
     print(f"Successfully booted {bot.user.name}")
-    await bot.tree.sync() # now, YOU DO NOT do this everytime your bot boots. if your bots public or has bunch of / commands this just spams the discord api and is unecessary dependant on what your bot is
-
+    
 @bot.event
 async def setup_hook():
     # if you use cogs, uncomment the lines below
@@ -28,7 +27,7 @@ async def setup_hook():
         if filename.endswith('.py'):
             cog_name = filename[:-3]
             try:
-                await bot.load_extension(f'Loaded cogs.{cog_name}') 
+                await bot.load_extension(f'Loaded the cog: {cog_name}') 
             except Exception as e:
                 print(e)
                 pass
