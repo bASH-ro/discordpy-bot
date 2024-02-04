@@ -1,9 +1,7 @@
 import discord
-from discord import app_commands
 from dotenv import load_dotenv
 import os
 from discord.ext import commands
-import asyncio
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -35,9 +33,7 @@ async def setup_hook():
             '''
 
 @bot.command()
-async def sync_commands(ctx): # command usage on discord in our instance would be .sync_commands
-    await bot.tree.sync()
-    await asyncio.sleep(3) # will delay the response from the bot by 3 seconds
-    await ctx.send("Synced commands.")
+async def ping(ctx):
+    await ctx.respond("Pong! {ctx.author.mention}")
 
 bot.run(BOT_TOKEN)
