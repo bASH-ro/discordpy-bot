@@ -1,21 +1,25 @@
 import discord
-from dotenv import load_dotenv
 import os
 from discord.ext import commands
+import builtins
+import asyncio
 
-load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 intents = discord.Intents.default()
 intents.members = True # for events on members (join, leave, update, etc.)
 intents.message_content = True # required for prefix commands, automod, and anything on raw messages to function
 
-# to add more to ur bot refer to this https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=commands%20bot#discord.ext.commands.Bot
-bot = commands.Bot(command_prefix='.', intents=intents, help_command=None, case_insensitive=True, member_cache_flags=discord.MemberCacheFlags.all(), status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.playing, name="Set your own"))
+class Bot(commands.Bot):
+    def __init__(self):
+        super.__init__()(command_prefix='.', intents=intents, help_command=None, case_insensitive=True, member_cache_flags=discord.MemberCacheFlags.all(), status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.playing, name="Set your own"))
+
+bot = Bot()
+builtins.bot = bot
 
 @bot.event
 async def on_ready(): ### This is called when everything is ready, DO NOT put anything inside here such as presence changes, or loading cogs etc. This is only here for you to know when the bot is ready. 
-    print(f"Successfully booted {bot.user.name}")
+    print(f"Successfully booted.")
     
 @bot.event
 async def setup_hook():
@@ -36,4 +40,9 @@ async def setup_hook():
 async def ping(ctx):
     await ctx.respond("Pong! {ctx.author.mention}")
 
-bot.run(BOT_TOKEN)
+async def bot_():
+    await bot.start(BOT_TOKEN, reconnect=True)
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if __name__ == '__main__':
+    asyncio.run(bot_())
